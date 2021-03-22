@@ -1,3 +1,8 @@
+## Prepare
+```
+  ./zookeeper-cluster-config.sh
+```
+
 ## Start Zookeeper Cluster
 ```
   dcup

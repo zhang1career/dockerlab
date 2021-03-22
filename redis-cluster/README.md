@@ -1,3 +1,8 @@
+## Prepare
+```
+  ./redis-cluster-config.sh
+```
+
 ## Start Zookeeper Cluster
 ```
   ip=$(ipconfig getifaddr en0) dcup --build
@@ -27,21 +32,21 @@
 
 ### List cluster nodes
 ```
-xxx.xxx.xxx.xxx:8002> cluster nodes
+  xxx.xxx.xxx.xxx:8002> cluster nodes
 ```
 
 ### List cluster slots
 ```
-xxx.xxx.xxx.xxx:8002> cluster slots
+  xxx.xxx.xxx.xxx:8002> cluster slots
 ```
 
 ### Show cluster info
 ```
-xxx.xxx.xxx.xxx:8002> cluster info
+  xxx.xxx.xxx.xxx:8002> cluster info
 ```
 
 ## R/W Seperation
 ### Set slave to readonly
 ```
-xxx.xxx.xxx.xxx:8004> readonly
+  xxx.xxx.xxx.xxx:8004> readonly
 ```
