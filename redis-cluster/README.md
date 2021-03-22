@@ -3,10 +3,6 @@
   ip=$(ipconfig getifaddr en0) dcup --build
 ```
 
-## Cluster Status
-```
-  dcps
-```
 
 ## Test
 ### Test host ping slave
@@ -21,5 +17,31 @@
    xxx.xxx.xxx.xxx:8003> set name admin
    > Redirected to slot [5798] located at xxx.xxx.xxx.xxx:8002
    OK
+```
 
+
+## Cluster Status
+```
+  dcps
+```
+
+### List cluster nodes
+```
+xxx.xxx.xxx.xxx:8002> cluster nodes
+```
+
+### List cluster slots
+```
+xxx.xxx.xxx.xxx:8002> cluster slots
+```
+
+### Show cluster info
+```
+xxx.xxx.xxx.xxx:8002> cluster info
+```
+
+## R/W Seperation
+### Set slave to readonly
+```
+xxx.xxx.xxx.xxx:8004> readonly
 ```
