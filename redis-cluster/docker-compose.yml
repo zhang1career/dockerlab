@@ -1,0 +1,103 @@
+version: '3.7'
+
+services:
+  redis1:
+    image: 'redis'
+    container_name: redis1
+    entrypoint:
+      ["redis-server", "/usr/local/etc/redis/redis.conf", --cluster-announce-ip, "${ip}"]
+    volumes:
+      - ./data/8001/conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./data/8001/data:/data
+    ports:
+      - "8001:8001"
+      - "18001:18001"
+    environment:
+      - TZ=Asia/Shanghai
+
+
+  redis2:
+    image: 'redis'
+    container_name: redis2
+    entrypoint:
+      ["redis-server", "/usr/local/etc/redis/redis.conf", --cluster-announce-ip, "${ip}"]
+    volumes:
+      - ./data/8002/conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./data/8002/data:/data
+    ports:
+      - "8002:8002"
+      - "18002:18002"
+    environment:
+      - TZ=Asia/Shanghai
+
+
+  redis3:
+    image: 'redis'
+    container_name: redis3
+    entrypoint:
+      ["redis-server", "/usr/local/etc/redis/redis.conf", --cluster-announce-ip, "${ip}"]
+    volumes:
+      - ./data/8003/conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./data/8003/data:/data
+    ports:
+      - "8003:8003"
+      - "18003:18003"
+    environment:
+      - TZ=Asia/Shanghai
+
+
+  redis4:
+    image: 'redis'
+    container_name: redis4
+    entrypoint:
+      ["redis-server", "/usr/local/etc/redis/redis.conf", --cluster-announce-ip, "${ip}"]
+    volumes:
+      - ./data/8004/conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./data/8004/data:/data
+    ports:
+      - "8004:8004"
+      - "18004:18004"
+    environment:
+      - TZ=Asia/Shanghai
+
+
+  redis5:
+    image: 'redis'
+    container_name: redis5
+    entrypoint:
+      ["redis-server", "/usr/local/etc/redis/redis.conf", --cluster-announce-ip, "${ip}"]
+    volumes:
+      - ./data/8005/conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./data/8005/data:/data
+    ports:
+      - "8005:8005"
+      - "18005:18005"
+    environment:
+      - TZ=Asia/Shanghai
+
+
+  redis6:
+    image: 'redis'
+    container_name: redis6
+    entrypoint:
+      ["redis-server", "/usr/local/etc/redis/redis.conf", --cluster-announce-ip, "${ip}"]
+    volumes:
+      - ./data/8006/conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./data/8006/data:/data
+    ports:
+      - "8006:8006"
+      - "18006:18006"
+    environment:
+      - TZ=Asia/Shanghai
+
+
+  creator:
+    image: 'redis'
+    entrypoint: [/bin/sh, -c, 'echo "yes" | redis-cli --cluster create ${ip}:8001 ${ip}:8002 ${ip}:8003 ${ip}:8004 ${ip}:8005 ${ip}:8006 --cluster-replicas 1']
+    depends_on:
+      - redis1
+      - redis2
+      - redis3
+      - redis4
+      - redis5
+      - redis6
