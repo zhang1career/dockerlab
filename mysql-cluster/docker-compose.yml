@@ -1,0 +1,46 @@
+version: '3.7'
+services:
+  mysql1:
+    image: mysql/mysql-server
+    container_name: mysql1
+    ports:
+      - 3306:3306
+    volumes:
+      - ./data/3306/mysql:/var/lib/mysql
+      - ./data/3306/conf/mysqld-master.cnf:/etc/my.cnf
+      - ./data/3306/log:/var/log
+    environment:
+      TZ: Asia/Shanghai
+      MYSQL_ROOT_PASSWORD: 123123
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: 123123
+    restart: always
+    networks:
+      mysql-ms-network:
+        ipv4_address: 172.25.0.101
+
+  mysql2:
+    image: mysql/mysql-server
+    container_name: mysql2
+    ports:
+      - 3307:3306
+    volumes:
+      - ./data/3307/mysql:/var/lib/mysql
+      - ./data/3307/conf/mysqld-slave.cnf:/etc/my.cnf
+      - ./data/3306/log:/var/log
+    environment:
+      TZ: Asia/Shanghai
+      MYSQL_ROOT_PASSWORD: 123123
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: 123123
+    restart: always
+    networks:
+      mysql-ms-network:
+        ipv4_address: 172.25.0.102
+
+networks:
+  mysql-ms-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.25.0.0/24
