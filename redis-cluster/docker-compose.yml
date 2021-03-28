@@ -7,8 +7,9 @@ services:
     entrypoint:
       ["redis-server", "/usr/local/etc/redis/redis.conf", --cluster-announce-ip, "${ip}"]
     volumes:
-      - ./data/8001/conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./data/8001/conf/redis.conf:/usr/local/etc/redis/redis.conf:ro
       - ./data/8001/data:/data
+      - ./data/8001/log:/var/log/redis
     ports:
       - "8001:8001"
       - "18001:18001"
@@ -22,8 +23,9 @@ services:
     entrypoint:
       ["redis-server", "/usr/local/etc/redis/redis.conf", --cluster-announce-ip, "${ip}"]
     volumes:
-      - ./data/8002/conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./data/8002/conf/redis.conf:/usr/local/etc/redis/redis.conf:ro
       - ./data/8002/data:/data
+      - ./data/8002/log:/var/log/redis
     ports:
       - "8002:8002"
       - "18002:18002"
@@ -37,8 +39,9 @@ services:
     entrypoint:
       ["redis-server", "/usr/local/etc/redis/redis.conf", --cluster-announce-ip, "${ip}"]
     volumes:
-      - ./data/8003/conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./data/8003/conf/redis.conf:/usr/local/etc/redis/redis.conf:ro
       - ./data/8003/data:/data
+      - ./data/8003/log:/var/log/redis
     ports:
       - "8003:8003"
       - "18003:18003"
@@ -52,8 +55,9 @@ services:
     entrypoint:
       ["redis-server", "/usr/local/etc/redis/redis.conf", --cluster-announce-ip, "${ip}"]
     volumes:
-      - ./data/8004/conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./data/8004/conf/redis.conf:/usr/local/etc/redis/redis.conf:ro
       - ./data/8004/data:/data
+      - ./data/8004/log:/var/log/redis
     ports:
       - "8004:8004"
       - "18004:18004"
@@ -67,8 +71,9 @@ services:
     entrypoint:
       ["redis-server", "/usr/local/etc/redis/redis.conf", --cluster-announce-ip, "${ip}"]
     volumes:
-      - ./data/8005/conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./data/8005/conf/redis.conf:/usr/local/etc/redis/redis.conf:ro
       - ./data/8005/data:/data
+      - ./data/8005/log:/var/log/redis
     ports:
       - "8005:8005"
       - "18005:18005"
@@ -82,8 +87,9 @@ services:
     entrypoint:
       ["redis-server", "/usr/local/etc/redis/redis.conf", --cluster-announce-ip, "${ip}"]
     volumes:
-      - ./data/8006/conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./data/8006/conf/redis.conf:/usr/local/etc/redis/redis.conf:ro
       - ./data/8006/data:/data
+      - ./data/8006/log:/var/log/redis
     ports:
       - "8006:8006"
       - "18006:18006"

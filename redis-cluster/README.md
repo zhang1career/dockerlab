@@ -1,6 +1,6 @@
 ## Prepare
 ```
-  ./redis-cluster-config.sh
+  ./config.sh
 ```
 
 ## Start Zookeeper Cluster
