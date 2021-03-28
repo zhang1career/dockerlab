@@ -3,8 +3,13 @@ version: '3'
 services:
   dubbo:
     image: apache/dubbo-admin
+    restart: always
     hostname: dubbo
     container_name: dubbo
+    depends_on:
+      - zk1
+      - zk2
+      - zk3
     ports:
       - 18080:8080
     environment:
