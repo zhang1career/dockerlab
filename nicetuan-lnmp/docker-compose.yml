@@ -16,17 +16,34 @@ services:
     ports:
       - 3306:3306
   
+  redis:
+    image: redis:5.0.12
+    container_name: redis
+    volumes:
+      - ./data/redis/conf/redis.conf:/usr/local/etc/redis/redis.conf:ro
+      - ./data/redis/data:/data
+      - ./data/redis/log:/var/log/redis
+    ports:
+      - 16379:16379
+    environment:
+      - REDIS_REPLICATION_MODE=master
+      - TZ=Asia/Shanghai
+  
   php-fpm:
     build: './docker/php'
     container_name: php-fpm
     restart: always
     volumes:
+      - ./data/php-fpm/conf/php.ini:/usr/local/etc/php/php.ini
       - ./data/php-fpm/conf/php-fpm.conf:/usr/local/etc/php-fpm.conf
       - ./data/php-fpm/conf/php-fpm.d:/usr/local/etc/php-fpm.d
       - ./data/php-fpm/log:/usr/local/var/log
       - ./data/app:/usr/share/nginx/html
     ports: 
       - 9000:9000
+    links:
+      - mysql:mysql
+      - redis:redis
   
   nginx:
     image: nginx:stable
