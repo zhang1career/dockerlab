@@ -17,7 +17,7 @@ services:
       - 3306:3306
   
   php-fpm:
-    image: php:fpm-alpine
+    build: './docker/php'
     container_name: php-fpm
     restart: always
     volumes:
