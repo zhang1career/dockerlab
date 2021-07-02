@@ -25,4 +25,4 @@ mkdir -p ./data/${service}/log
 
 service=app
 mkdir -p ./data/${service}
-cp docker/app/* ./data/${service}/
+# cp docker/app/* ./data/${service}/
