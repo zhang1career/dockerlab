@@ -24,7 +24,7 @@ services:
       - ./data/redis/data:/data
       - ./data/redis/log:/var/log/redis
     ports:
-      - 16379:16379
+      - 6379:6379
     environment:
       - REDIS_REPLICATION_MODE=master
       - TZ=Asia/Shanghai

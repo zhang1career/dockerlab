@@ -1,6 +1,7 @@
 ## Prepare
 ```
-  ./zookeeper-cluster-config.sh
+  ./zookeeper-cluster-config.sh &&
+  ./rabbitmq-config.sh
 ```
 
 ## Start Zookeeper Cluster
