@@ -1,0 +1,18 @@
+version: '3.1'
+
+services:
+  centos-dev:
+    image: zhang1career/centos-dev:1.3
+    container_name: centos-dev
+    privileged: true
+    environment: 
+      - container=docker
+    ports:
+      - "2222:22"
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      # - ~/Projects/nicetuan/nicetuan_govern_phpext_reporter:/data/projects/php-src/ext/reporter
+    cap_add:
+      - SYS_PTRACE
+    command:
+      - /usr/sbin/init
