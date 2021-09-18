@@ -2,16 +2,16 @@ version: '3.1'
 
 services:
   centos-dev:
-    image: zhang1career/centos-dev:1.3
-    container_name: centos-dev
+    image: zhang1career/centos-dev:0.5
+    container_name: php-cpp
     privileged: true
-    environment: 
-      - container=docker
     ports:
       - "2222:22"
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-      # - ~/Projects/nicetuan/nicetuan_govern_phpext_reporter:/data/projects/php-src/ext/reporter
+      - /Users/zhangrj/Projects/nicetuan/php-src:/data/projects/php-src:rw
+      - /Users/zhangrj/Projects/nicetuan/php-bin:/data/projects/php-bin:rw
+      - /Users/zhangrj/Projects/nicetuan/php-cpp:/data/projects/php-cpp:rw
     cap_add:
       - SYS_PTRACE
     command:
